@@ -8,15 +8,26 @@ let count = 0;
 
 addTask.addEventListener("click", () => {
   let request = prompt("Add Tasks");
-
-  tasks = request;
-  taskContainer.insertAdjacentHTML(
-    "beforebegin",
-    `<div class="taskDiv">
+  if (request !== "") {
+    tasks = request;
+    taskContainer.insertAdjacentHTML(
+      "beforebegin",
+      `<div class="taskDiv">
     <input type="checkbox" id="input" name="" value="" />
     <span id="inputId"> ${tasks}</span>
   </div>`
-  );
+    );
+  } else {
+    taskContainer.remove();
+  }
+  // tasks = request;
+  // taskContainer.insertAdjacentHTML(
+  //   "beforebegin",
+  //   `<div class="taskDiv">
+  //   <input type="checkbox" id="input" name="" value="" />
+  //   <span id="inputId"> ${tasks}</span>
+  // </div>`
+  // );
 
   count++;
   timer.innerHTML = count;
