@@ -6,10 +6,9 @@ let dateAndTime = document.getElementById("date");
 
 let count = 0;
 
-// dat();
-
 addTask.addEventListener("click", () => {
   let request = prompt("Add Tasks");
+
   tasks = request;
   taskContainer.insertAdjacentHTML(
     "beforebegin",
@@ -18,17 +17,10 @@ addTask.addEventListener("click", () => {
     <span id="inputId"> ${tasks}</span>
   </div>`
   );
+
   count++;
   timer.innerHTML = count;
 });
-
-// const dat = () => {
-//   const today = new Date();
-//   let date =
-//     today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
-//   // console.log(date);
-//   // dateAndTime.innerHTML = date;
-// };
 
 const myDate = () => {
   const today = new Date();
