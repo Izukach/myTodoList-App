@@ -7,9 +7,16 @@ let delectbtn = document.getElementById("delectBtn");
 
 let count = 0;
 
+id = [0];
+
 addTask.addEventListener("click", () => {
   let request = prompt("Add Tasks");
-  if (request === null || request === undefined) return;
+  if (request === null || request === undefined) {
+    return;
+  } else if (Number(request) || Symbol(request)) {
+    let rat = prompt("insert letter");
+    request = rat;
+  }
 
   if (request === "") {
     count--;
@@ -22,14 +29,20 @@ addTask.addEventListener("click", () => {
       `<div class="taskDiv">
     <input type="checkbox" id="input" name="" value="" />
     <span id="inputId"> ${tasks}</span>
-    <button id = "delectBtn"><i class="fa-solid fa-trash"></i></button>
+    <button  id = "delectBtn" onClick = "delectCard(value)" "value = ${id[0]}"><i class="fa-solid fa-trash"></i></button>
   </div>`
     );
   } else {
     taskContainer.hidden = true;
   }
-  count++;
+  id[0] = +(
+    // gg
+    count++
+  );
+
   timer.innerHTML = count;
+
+  console.log(id);
 });
 
 const myDate = () => {
@@ -41,6 +54,13 @@ const myDate = () => {
 
 myDate();
 
-delectbtn.addEventListener("click", () => {
-  console.log("happy");
-});
+const delectCard = (value) => {
+  let card = document.querySelectorAll(".taskDiv");
+  card.forEach((element, id) => {
+    if (value == id) {
+      count--;
+      timer.innerHTML = count;
+      element.remove();
+    }
+  });
+};
