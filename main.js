@@ -11,11 +11,8 @@ id = [0];
 
 addTask.addEventListener("click", () => {
   let request = prompt("Add Tasks");
-  if (request === null || request === undefined) {
+  if (request === null || request === undefined || Number(request)) {
     return;
-  } else if (Number(request) || Symbol(request)) {
-    let rat = prompt("insert letter");
-    request = rat;
   }
 
   if (request === "") {
